@@ -91,7 +91,7 @@ main {
 }
 
 #card__container {
-	width: 70%;
+  width: 60%;
   height: 100%;
   background: #ddedf4;
   opacity: 0.95;
@@ -99,7 +99,35 @@ main {
   font-weight: 800;
   font-size: 22px; 
   color: #212221;
-  padding: 1.5%;
+  padding: 1.75%;
+	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
+	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+/*#main__allergy--card {
+	width: 30%;
+  height: 100%;
+  background: #44449b;
+  opacity: 0.95;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 22px; 
+  color: #212221;
+  padding: 1.75%;
+	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
+	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}*/
+
+#allergy__container {
+  width: 20%;
+  height: 100%;
+  background: #44449b;
+  opacity: 0.95;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 9px; 
+  color: #212221;
+  padding: 1.75%;
 	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
 	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }

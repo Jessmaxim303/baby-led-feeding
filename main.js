@@ -3,6 +3,7 @@ var nameInput = document.getElementById('main__name--input');
 var ageInput = document.getElementById('main__age--input');
 var mainButton = document.getElementById('main__age--button');
 var infoCard = document.getElementById('main__info--card');
+var allergyCard = document.getElementById('main__allergy--card');
 
 // EVENT LISTENERS*****************
 mainButton.addEventListener("click", mainEvent);
@@ -12,16 +13,19 @@ function mainEvent() {
   newMenuContainer();
   getAge();
   insertSixMonths();
+  insertAllergyInfo()
 }
 
 function newMenuContainer() {
-  document.getElementById('main__artiacle--container').style.width = "25%";
+  document.getElementById('main__artiacle--container').style.width = "30%";
   document.getElementById('main__artiacle--container').style.fontSize = "small";
   document.getElementById('main__artiacle--container').style.marginLeft = "20%";
+  document.getElementById('main__artiacle--container').style.background = "#212221";
   document.getElementById('main__age--input').style.display = "inline-block";
   document.getElementById('main__name--input').style.width = "90%";
   document.getElementById('main__age--input').style.width = "90%";
   document.getElementById('main__age--button').style.width = "90%";
+
   // document.querySelector('main__input--text').innerText = 'Enter Name <br> and Age';
   // document.getElementById('card__container').style.width = '20%';
 };
@@ -42,6 +46,17 @@ function insertSixMonths() {
        <div>
      </container>`);
 };
+
+function insertAllergyInfo() {
+  allergyCard.insertAdjacentHTML('afterbegin',
+    `<container id="main__allergy--card">
+      <div id="allergy__container">
+         <p>
+           If your baby is ready to start solids.
+         </p>
+       <div>
+     </container>`);
+}
 
 function getAge() {
 	var ageData = ageInput.value;
