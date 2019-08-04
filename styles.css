@@ -42,8 +42,8 @@ main {
 	margin-top: 10%;
 }
 
-#main__artiacle--container {
-	width: 50%;
+#main__article--container {
+  width: 50%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
@@ -91,7 +91,7 @@ main {
 }
 
 #card__container {
-  width: 60%;
+  width: 80%;
   height: 100%;
   background: #ddedf4;
   opacity: 0.95;
@@ -100,9 +100,39 @@ main {
   font-size: 22px; 
   color: #212221;
   padding: 1.75%;
-	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
+	          0 6px 20px 0 rgba(0, 0, 0, 0.4);
+	display: inline-block;
+}
+
+#allergy__container {
+  width: 20%;
+  height: 100%;
+  background: #44449b;
+  opacity: 0.95;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 9px; 
+  color: #212221;
+  padding: 1.75%;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
 	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
+
+.images__home--icon {
+	width: 40px;
+	height: 40px;
+	margin-top: 12%;
+}
+
+#homeIcon {
+	margin-top: 2%;
+	padding: 2%;
+}
+
+
+
+
 
 /*#main__allergy--card {
 	width: 30%;
@@ -118,18 +148,5 @@ main {
 	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }*/
 
-#allergy__container {
-  width: 20%;
-  height: 100%;
-  background: #44449b;
-  opacity: 0.95;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 800;
-  font-size: 9px; 
-  color: #212221;
-  padding: 1.75%;
-	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
-	            0 6px 20px 0 rgba(0, 0, 0, 0.4);
-}
 
 
