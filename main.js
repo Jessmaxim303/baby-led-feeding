@@ -7,10 +7,12 @@ var allergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
 var mainContent = document.getElementById('mainContent');
 var imagesHomeArticle = document.getElementById('images__home--article');
+var allergyIconButton = document.getElementById('#allergyIcon');
 
 // EVENT LISTENERS*****************
 
 mainButton.addEventListener("click", mainEvent);
+// allergyIconButton.addEventListener("click", allergyCard);
 
 // FUNCTION**************************
 
@@ -37,14 +39,16 @@ function newMenuContainer() {
   // document.getElementById('card__container').style.width = '20%';
 };
 
-// function allergyContainer() {
-//   document.getElementById('main__article--container').style.width = "80px";
-//   // document.getElementById('main__article--container').style.marginLeft = "10%";
-//   document.getElementById('main__article--container').style.background = "#0F709B";
-//   document.getElementById('main__info--card').style.width = "60%";
-//   document.getElementById('main__content').innerText = " ";
-//   insertHomeIcon();
-// };
+function allergyContainer() {
+  // document.getElementById('main__article--container').style.width = "80px";
+  document.getElementById('card__container').style.width = "80px";
+  document.getElementById('main__info--card').style.width = "80px";
+  document.getElementById('allergy__container').style.width = "60%";
+  // document.getElementById('main__article--container').style.marginLeft = "10%";
+  document.getElementById('main__article--container').style.background = "red";
+  document.getElementById('main__content').innerText = " ";
+  document.getElementById('card__container').innerText = " ";
+};
 
 function insertHomeIcon() {
    imagesHomeArticle.insertAdjacentHTML('afterbegin',
