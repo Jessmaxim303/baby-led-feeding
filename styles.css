@@ -50,7 +50,7 @@ main {
   color: #ddedf4;
   font-size: 1.5em;
   background: #1181b2;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   display: block;
   border-radius: 5px;
   text-align: center;
@@ -91,13 +91,13 @@ main {
 }
 
 #card__container {
-  width: 80%;
+  width: 100%;
   height: 100%;
   background: #ddedf4;
   opacity: 0.95;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
-  font-size: 22px; 
+  font-size: 1em; 
   color: #212221;
   padding: 1.75%;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
@@ -105,14 +105,20 @@ main {
 	display: inline-block;
 }
 
+#main__info--card {
+	/*width: 50%;*/
+	height: 100%;
+}
+
 #allergy__container {
-  width: 20%;
+  width: 80px;
   height: 100%;
   background: #44449b;
   opacity: 0.95;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
-  font-size: 9px; 
+  font-size: 9px;
+  border-radius: 3px;
   color: #212221;
   padding: 1.75%;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
@@ -120,11 +126,19 @@ main {
 }
 
 .images__home--icon {
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	margin-top: 12%;
 }
 
+.images__allergy--icon {
+	width: 50px;
+	height: 50px;
+	margin-top: 12%;
+	margin-left: 12%;
+}
+
+#allergyIcon,
 #homeIcon {
 	margin-top: 2%;
 	padding: 2%;
