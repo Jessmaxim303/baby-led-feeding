@@ -3,16 +3,18 @@ var nameInput = document.getElementById('main__name--input');
 var ageInput = document.getElementById('main__age--input');
 var mainButton = document.getElementById('main__age--button');
 var infoCard = document.getElementById('main__info--card');
+// var allergyCard = document.getElementById('main__allergy--card');
 var allergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
 var mainContent = document.getElementById('mainContent');
 var imagesHomeArticle = document.getElementById('images__home--article');
 var allergyIconButton = document.getElementById('#allergyIcon');
+var allergyContainer = document.getElementById('allergy__container');
 
 // EVENT LISTENERS*****************
 
 mainButton.addEventListener("click", mainEvent);
-// allergyIconButton.addEventListener("click", allergyCard);
+allergyCard.addEventListener("click", allergyEventHandler);
 
 // FUNCTION**************************
 
@@ -20,8 +22,17 @@ function mainEvent() {
   newMenuContainer();
   getAge();
   // insertSixMonths();
-  insertAllergyInfo();
+
+  insertAllergyIcon();
 }
+
+function allergyEventHandler(e) {
+  if (event.target.className === "allergyIcon") {
+    allergySectionContent(); 
+    insertAllergyContent();
+    console.log('Allergy section event!')
+  }
+};
 
 function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
@@ -39,15 +50,17 @@ function newMenuContainer() {
   // document.getElementById('card__container').style.width = '20%';
 };
 
-function allergyContainer() {
-  // document.getElementById('main__article--container').style.width = "80px";
+function allergySectionContent() {
+  console.log('Allergy container working');
   document.getElementById('card__container').style.width = "80px";
+  document.getElementById('card__container').style.opacity = "1";
   document.getElementById('main__info--card').style.width = "80px";
-  document.getElementById('allergy__container').style.width = "60%";
-  // document.getElementById('main__article--container').style.marginLeft = "10%";
-  document.getElementById('main__article--container').style.background = "red";
-  document.getElementById('main__content').innerText = " ";
-  document.getElementById('card__container').innerText = " ";
+  document.getElementById('allergy__container').style.width = "55em";
+  // document.getElementById('main__article--container').style.background = "red";
+  // document.getElementById('main__content').innerText = " ";
+  // document.getElementById('card__container').innerText = " ";
+  // document.getElementById('allergyIcon').innerText = " ";
+  // insertAllergyContent();
 };
 
 function insertHomeIcon() {
@@ -59,14 +72,37 @@ function insertHomeIcon() {
      </container>`);
 };
 
-function insertAllergyInfo() {
+function insertAllergyIcon(e) {
   allergyCard.insertAdjacentHTML('afterbegin',
-    `<container id="main__allergy--card">
-      <div id="allergy__container">
-         <div id="allergyIcon">
+   `<container id="main__allergy--card">
+     <div id="allergy__container" class="allergy__container">
+      <div id="allergyIcon" class="allergyIcon">
         <img class="images__allergy--icon" src="images/hospital.png">
       </div>
-       <div>
+     </div>
+    </container>`);
+};
+
+// function insertAllergyCard(e) {
+//   allergyCard.insertAdjacentHTML('afterbegin',
+//   `<container id="main__allergy--card">
+//     <div id="allergy__container" class="allergy__container">
+//     </div>
+//    </container>`);
+// }
+
+function insertAllergyContent(e) {
+  console.log('allergy Container!')
+  allergyContainer.insertAdjacentHTML('afterbegin',
+    `<container id="allergy__content--container">
+      <div id="allergy__content--case">
+          <h3>
+            header
+          </h3>
+          <p> 
+            paragraph 
+          </p>
+       </div>
      </container>`);
 };
 
