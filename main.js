@@ -4,7 +4,7 @@ var ageInput = document.getElementById('main__age--input');
 var mainButton = document.getElementById('main__age--button');
 var infoCard = document.getElementById('main__info--card');
 // var allergyCard = document.getElementById('main__allergy--card');
-var allergyCard = document.getElementById('main__allergy--card');
+var mainAllergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
 var mainContent = document.getElementById('mainContent');
 var imagesHomeArticle = document.getElementById('images__home--article');
@@ -12,11 +12,13 @@ var allergyIconButton = document.getElementById('#allergyIcon');
 var allergyContainer = document.getElementById('allergy__container');
 var cardContainer = document.getElementById('card__container');
 var imagesMenuArticle = document.getElementById('images__menu--article');
+var imagesAllergyArticle = document.getElementById('images__allergy--article');
+var allergyContentContainer = document.getElementById('allergy__content--container');
 
 // EVENT LISTENERS*****************
 
 mainButton.addEventListener("click", mainEvent);
-allergyCard.addEventListener("click", allergyEventHandler);
+mainAllergyCard.addEventListener("click", allergyEventHandler);
 
 // FUNCTION**************************
 
@@ -29,30 +31,31 @@ function mainEvent() {
 function allergyEventHandler(e) {
   allergySectionContent(); 
   insertAllergyContent();
-  console.log('Allergy section event!');
-  insertAllergyContent();
-  
 };
+
+function menuHandler(e){
+  if (e.target.classList.contains("section__img--delete")){
+    removeCard(e);
+  }
+}
 
 function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
   document.getElementById('main__article--container').style.background = "#0F709B";
   document.getElementById('main__info--card').style.width = "60%";
   document.getElementById('main__content').innerText = " ";
+  document.getElementById('main__allergy--card').style.width = "80px";
   insertHomeIcon();
 };
 
 function allergySectionContent(e) {
-  console.log('Allergy container working');
-  insertMenuIcon();
+  document.getElementById('main__allergy--card').style.visibility = "visible";
   document.getElementById('card__container').style.width = "80px";
-  document.getElementById('card__container--h2').innerText = " ";
-  document.getElementById('card__container--p').innerText = " ";
+  document.getElementById('card__container').innerText = " ";
   document.getElementById('card__container').style.opacity = "1";
+  document.getElementById('main__allergy--card').style.width = "60%";
   document.getElementById('main__info--card').style.width = "80px";
-  document.getElementById('allergy__container').style.width = "55em";
   document.getElementById('allergyIcon').innerText = " ";
-  insertMenuIcon();
 };
 
 function insertHomeIcon() {
@@ -74,8 +77,8 @@ function insertMenuIcon() {
      </container>`);
 };
 
-function insertAllergyIcon(e) {
-  allergyCard.insertAdjacentHTML('afterbegin',
+function insertAllergyIcon() {
+  imagesAllergyArticle.insertAdjacentHTML('afterbegin',
    `<container id="main__allergy--card">
      <div id="allergy__container" class="allergy__container">
       <div id="allergyIcon" class="allergyIcon">
@@ -86,15 +89,17 @@ function insertAllergyIcon(e) {
 };
 
 function insertAllergyContent(e) {
-  console.log('allergy Content!')
-  allergyContainer.insertAdjacentHTML('afterbegin',
-    `<container id="allergy__content--container">
-      <div id="allergy__content--case">
+  mainAllergyCard.insertAdjacentHTML('afterbegin',
+    `<container id="main__allergy--card">
+       <div id="allergy__content--container" class="allergy__content--container">
           <h3>
-            header
+            How to Avoid Food Allergies
           </h3>
-          <p> 
-            paragraph 
+          <p>
+            <span style="font-weight: 400"> 
+              Allergic conditions include asthma, atopic dermatitis, eczema, hay fever 
+              (conditions regrouped and often referred to as atopy), or food allergies.
+            </span> 
           </p>
        </div>
      </container>`);
@@ -104,13 +109,15 @@ function insertBeforeSixMonths() {
 	 infoCard.insertAdjacentHTML('afterbegin',
     `<container id="info__card--container">
       <div id="card__container">
-        <h2 id="card__container--h2">
+        <h2>
         	${nameInput.value}
          	${ageInput.value}
         </h2>
-       	 <p id="card__container--p>
+       	 <p>
+          <span style="font-weight: 400"> 
       		 Not recommended for babies under 6 months. 
            Food before one is just for fun.
+           </span>
       	 </p>
        </div>
      </container>`);
