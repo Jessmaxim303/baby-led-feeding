@@ -10,6 +10,8 @@ var mainContent = document.getElementById('mainContent');
 var imagesHomeArticle = document.getElementById('images__home--article');
 var allergyIconButton = document.getElementById('#allergyIcon');
 var allergyContainer = document.getElementById('allergy__container');
+var cardContainer = document.getElementById('card__container');
+var imagesMenuArticle = document.getElementById('images__menu--article');
 
 // EVENT LISTENERS*****************
 
@@ -22,12 +24,13 @@ function mainEvent() {
   newMenuContainer();
   getAge();
   insertAllergyIcon();
-}
+};
 
 function allergyEventHandler(e) {
   allergySectionContent(); 
   insertAllergyContent();
-  console.log('Allergy section event!')
+  console.log('Allergy section event!');
+  insertAllergyContent();
   
 };
 
@@ -41,13 +44,15 @@ function newMenuContainer() {
 
 function allergySectionContent(e) {
   console.log('Allergy container working');
+  insertMenuIcon();
   document.getElementById('card__container').style.width = "80px";
-  document.getElementById('card__container').innerText = " ";
+  document.getElementById('card__container--h2').innerText = " ";
+  document.getElementById('card__container--p').innerText = " ";
   document.getElementById('card__container').style.opacity = "1";
   document.getElementById('main__info--card').style.width = "80px";
   document.getElementById('allergy__container').style.width = "55em";
   document.getElementById('allergyIcon').innerText = " ";
-  insertAllergyContent();
+  insertMenuIcon();
 };
 
 function insertHomeIcon() {
@@ -59,11 +64,12 @@ function insertHomeIcon() {
      </container>`);
 };
 
-function insertHomeIcon() {
-   imagesHomeArticle.insertAdjacentHTML('afterbegin',
-    `<container id="home__icon--container">
-      <div id="homeIcon">
-        <img class="images__home--icon" src="images/home.png">
+function insertMenuIcon() {
+  console.log('Menu icon!')
+   cardContainer.insertAdjacentHTML('afterbegin',
+    `<container id="menu__icon--container">
+      <div id="menuIcon">
+        <img class="images__menu--icon" src="images/tomato.png">
       </div>
      </container>`);
 };
@@ -98,22 +104,23 @@ function insertBeforeSixMonths() {
 	 infoCard.insertAdjacentHTML('afterbegin',
     `<container id="info__card--container">
       <div id="card__container">
-        <h2>
+        <h2 id="card__container--h2">
         	${nameInput.value}
          	${ageInput.value}
         </h2>
-       	 <p>
+       	 <p id="card__container--p>
       		 Not recommended for babies under 6 months. 
            Food before one is just for fun.
       	 </p>
-       <div>
+       </div>
      </container>`);
 };
 
 function insertSixMonths() {
    infoCard.insertAdjacentHTML('afterbegin',
     `<container id="info__card--container">
-      <div id="card__container">
+      <div id="images__menu--article"> 
+       <div id="card__container">
         <h2>
           ${nameInput.value}
           ${ageInput.value}
@@ -134,14 +141,14 @@ function insertSixMonths() {
           rice cereal, pureed chicken, or a wedge of watermelon to gnaw on, offer him just one new 
           food every three days, and watch closely for signs of allergic reaction.
         </p>
-       <div>
+       </div>
      </container>`);
 };
 
 function insertEightMonths() {
    infoCard.insertAdjacentHTML('afterbegin',
     `<container id="info__card--container">
-      <div id="card__container">
+       <div id="card__container">
         <h2>
           ${nameInput.value}
           ${ageInput.value}
@@ -156,7 +163,7 @@ function insertEightMonths() {
             Introduce food allergens early on
            There is no real advantage of delaying food allergen introduction.
           </p>
-      <div>
+      </div>
     </container>`);
 };
 
@@ -178,7 +185,7 @@ function insertTenMonths() {
           Introduce food allergens early on
           There is no real advantage of delaying food allergen introduction.
         </p>
-      <div>
+      </div>
     </container>`);
 };
 
@@ -198,7 +205,7 @@ function insertTwelveMonths() {
           The amount of chewing strength and stamina required depends on food texture. 
           Mix things up to expose baby to various textures.
         </p>
-      <div>
+      </div>
     </container>`);
 };
 
@@ -216,7 +223,7 @@ function insertTwelvePlus() {
         <p>
           Baby eats like a pro and likely has more and more teeth, helping with the chewing.
         </p>
-      <div>
+      </div>
     </container>`);
 };
 
