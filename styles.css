@@ -11,27 +11,29 @@ body {
 header {
 	width: 100%;
 	height: 16%;
-	background: #212221;
+	background: #5daa68;
 	text-align: center;
 	font-size: 3vw;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 800;
-	color: #1181b2;
-	padding: 2% 0 2% 0;
+	text-shadow: 3px 4px #3f6844; 
+	color: #faf1cf;
+	padding: 2% 0 1% 0;
   line-height: 1.1em;
 }
 
 #main__input--text {
-	margin: 5% 0 5% 0;
-	font-size: 2.8vw;
+	text-shadow: 2px 2px #3f6844; 
+	margin: 5% 0 3% 0;
+  font-size: 2.5vw;
 }
 
 main {
 	width: 100%;
-	height: 80%;
+	height: 74%;
 	background-image: url(images/baby-led.jpg);
 	background-size: cover; 
-	padding-top: 20px;
+	padding-top: 1;
 }
 
 #main__container--unit {
@@ -47,9 +49,9 @@ main {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
-  color: #ddedf4;
+  color: #faf1cf;
   font-size: 1.5em;
-  background: #1181b2;
+  background: #5daa68;
   display: block;
   border-radius: 5px;
   text-align: center;
@@ -59,7 +61,7 @@ main {
 #footer__section {
 	width: 100%;
 	height: 10vh;
-	background: #44449b;
+	background: #3f6844;
 }
 
 #main__name--input,
@@ -80,7 +82,7 @@ main {
 	border-radius: 3px;
 	border: none;
 	margin-top: 30px;
-	background: #0B4E6C;
+	background: #3f6844;
 	font-size: 16px;
 	color: #ffffff;
 }
@@ -89,7 +91,7 @@ main {
 	background: #E05517;
 }
 
-#card__container {
+/*#card__container {
   width: 100%;
   height: 100%;
   background: #ddedf4;
@@ -102,10 +104,22 @@ main {
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
 	          0 6px 20px 0 rgba(0, 0, 0, 0.4);
 	display: inline-block;
-}
+}*/
 
 #main__info--card {
-	height: 100%;
+	width: 0;
+  height: 100%;
+  background: #ddedf4;
+  opacity: 0.95;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1em; 
+  color: #212221;
+  padding: 1.75%;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4), 
+	          0 6px 20px 0 rgba(0, 0, 0, 0.4);
+	display: inline-block;
+	visibility: hidden;
 }
 
 #allergy__container {
@@ -148,6 +162,13 @@ main {
 .images__allergy--icon {
 	width: 50px;
 	height: 50px;
+}
+
+#foodIconsContainer {
+	width: 100%;
+	height: 15%;
+	background: red;
+	display: inline-block;
 }
 
 #allergyIcon,

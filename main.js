@@ -8,6 +8,7 @@ var mainAllergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
 var mainContent = document.getElementById('mainContent');
 var imagesHomeArticle = document.getElementById('images__home--article');
+var imagesMenuArticle = document.getElementById('images__menu--article');
 var allergyIconButton = document.getElementById('#allergyIcon');
 var allergyContainer = document.getElementById('allergy__container');
 var cardContainer = document.getElementById('card__container');
@@ -43,6 +44,7 @@ function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
   document.getElementById('main__article--container').style.background = "#0F709B";
   document.getElementById('main__info--card').style.width = "60%";
+  document.getElementById('main__info--card').style.visibility = "visible";
   document.getElementById('main__content').innerText = " ";
   document.getElementById('main__allergy--card').style.width = "80px";
   insertHomeIcon();
@@ -56,6 +58,7 @@ function allergySectionContent(e) {
   document.getElementById('main__allergy--card').style.width = "60%";
   document.getElementById('main__info--card').style.width = "80px";
   document.getElementById('allergyIcon').innerText = " ";
+  insertMenuIcon()
 };
 
 function insertHomeIcon() {
@@ -69,7 +72,7 @@ function insertHomeIcon() {
 
 function insertMenuIcon() {
   console.log('Menu icon!')
-   cardContainer.insertAdjacentHTML('afterbegin',
+   imagesMenuArticle.insertAdjacentHTML('afterbegin',
     `<container id="menu__icon--container">
       <div id="menuIcon">
         <img class="images__menu--icon" src="images/tomato.png">
@@ -89,6 +92,7 @@ function insertAllergyIcon() {
 };
 
 function insertAllergyContent(e) {
+  console.log(mainAllergyCard.value);
   mainAllergyCard.insertAdjacentHTML('afterbegin',
     `<container id="main__allergy--card">
        <div id="allergy__content--container" class="allergy__content--container">
@@ -101,6 +105,14 @@ function insertAllergyContent(e) {
               (conditions regrouped and often referred to as atopy), or food allergies.
             </span> 
           </p>
+          <div id="foodIconsContainer">
+            <div id="milkIcon" class="milkIcon">
+              <img class="images__milk--icon" src="images/milk.png">
+            </div>
+            <div id="peanutIcon" class="peanutIcon">
+              <img class="images__peanuts--icon" src="images/peanuts.png">
+            </div>
+          </div>
        </div>
      </container>`);
 };
