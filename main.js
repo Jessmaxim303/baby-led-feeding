@@ -15,6 +15,8 @@ var cardContainer = document.getElementById('card__container');
 var imagesMenuArticle = document.getElementById('images__menu--article');
 var imagesAllergyArticle = document.getElementById('images__allergy--article');
 var allergyContentContainer = document.getElementById('allergy__content--container');
+var allergryContent = 0;
+var menuIcon = 0;
 
 // EVENT LISTENERS*****************
 
@@ -23,22 +25,22 @@ mainAllergyCard.addEventListener("click", allergyEventHandler);
 
 // FUNCTION**************************
 
-function mainEvent() {
+function mainEvent(e) {
   newMenuContainer();
   getAge();
-  insertAllergyIcon();
+  insertAllergyIcon(e);
 };
 
 function allergyEventHandler(e) {
-  allergySectionContent(); 
-  insertAllergyContent();
+  allergySectionContent(e); 
+  insertAllergyContent(e);
+  allergyHandler(e);
 };
 
-function menuHandler(e){
-  if (e.target.classList.contains("section__img--delete")){
-    removeCard(e);
-  }
-}
+function allergyHandler(e){
+  var allergyNodes = document.getElementById("main__allergy--card").childNodes;
+  console.log(allergyNodes);
+};
 
 function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
@@ -54,7 +56,13 @@ function allergySectionContent(e) {
   document.getElementById('main__allergy--card').style.visibility = "visible";
   document.getElementById('card__container').style.width = "80px";
   document.getElementById('card__container').innerText = " ";
-  document.getElementById('card__container').style.opacity = "1";
+  document.getElementById('main__info--card').style.opacity = "1";
+  // document.getElementById('foodIconsContainer').style.height = "50px";
+  // document.getElementById('foodIconsContainer').style.display = "inline-block";
+  // document.getElementById('images__milk--icon').style.height = "50px";
+  // document.getElementById('images__milk--icon').style.width = "50px";
+  // document.getElementById('images__peanuts--icon').style.height = "50px";
+  // document.getElementById('images__peanuts--icon').style.width = "50px";
   document.getElementById('main__allergy--card').style.width = "60%";
   document.getElementById('main__info--card').style.width = "80px";
   document.getElementById('allergyIcon').innerText = " ";
@@ -71,13 +79,15 @@ function insertHomeIcon() {
 };
 
 function insertMenuIcon() {
-  console.log('Menu icon!')
+  if (menuIcon === 0) {
    imagesMenuArticle.insertAdjacentHTML('afterbegin',
     `<container id="menu__icon--container">
       <div id="menuIcon">
         <img class="images__menu--icon" src="images/tomato.png">
       </div>
      </container>`);
+ }
+ menuIcon++;
 };
 
 function insertAllergyIcon() {
@@ -91,8 +101,8 @@ function insertAllergyIcon() {
     </container>`);
 };
 
-function insertAllergyContent(e) {
-  console.log(mainAllergyCard.value);
+function insertAllergyContent(e) { 
+  if (allergryContent === 0) {
   mainAllergyCard.insertAdjacentHTML('afterbegin',
     `<container id="main__allergy--card">
        <div id="allergy__content--container" class="allergy__content--container">
@@ -106,15 +116,14 @@ function insertAllergyContent(e) {
             </span> 
           </p>
           <div id="foodIconsContainer">
-            <div id="milkIcon" class="milkIcon">
-              <img class="images__milk--icon" src="images/milk.png">
-            </div>
-            <div id="peanutIcon" class="peanutIcon">
-              <img class="images__peanuts--icon" src="images/peanuts.png">
-            </div>
+              <img id="images__milk--icon" src="images/milk.png">
+              <img id="images__peanuts--icon" src="images/peanuts.png">
+              <img id="images__peanuts--icon" src="images/peanuts.png">
           </div>
        </div>
      </container>`);
+  allergryContent++;
+ }
 };
 
 function insertBeforeSixMonths() {
