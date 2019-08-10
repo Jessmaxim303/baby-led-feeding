@@ -191,8 +191,12 @@ main {
 	display: inline-block;
 }
 
+#images__bread--icon,
+#images__soy--icon,
+#images__fish--icon,
 #images__peanuts--icon,
 #images__milk--icon {
+	height: 50px;
 	width: 50px;
 	display: inline-block;
 }

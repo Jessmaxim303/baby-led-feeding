@@ -1,27 +1,31 @@
 // GLOBAL VAR******************
-var nameInput = document.getElementById('main__name--input');
-var ageInput = document.getElementById('main__age--input');
-var mainButton = document.getElementById('main__age--button');
-var infoCard = document.getElementById('main__info--card');
 // var allergyCard = document.getElementById('main__allergy--card');
+var ageInput = document.getElementById('main__age--input');
+var allergryContent = 0;
+var allergyContainer = document.getElementById('allergy__container');
+var allergyContentContainer = document.getElementById('allergy__content--container');
+var allergyIconButton = document.getElementById('#allergyIcon');
+var cardContainer = document.getElementById('card__container');
+var imagesAllergyArticle = document.getElementById('images__allergy--article');
+var imagesHomeArticle = document.getElementById('images__home--article');
+var imagesHomeIcon = document.getElementById('images__home--icon');
+var imagesMenuArticle = document.getElementById('images__menu--article');
+var imagesMenuArticle = document.getElementById('images__menu--article');
+var infoCard = document.getElementById('main__info--card');
 var mainAllergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
+var mainButton = document.getElementById('main__age--button');
 var mainContent = document.getElementById('mainContent');
-var imagesHomeArticle = document.getElementById('images__home--article');
-var imagesMenuArticle = document.getElementById('images__menu--article');
-var allergyIconButton = document.getElementById('#allergyIcon');
-var allergyContainer = document.getElementById('allergy__container');
-var cardContainer = document.getElementById('card__container');
-var imagesMenuArticle = document.getElementById('images__menu--article');
-var imagesAllergyArticle = document.getElementById('images__allergy--article');
-var allergyContentContainer = document.getElementById('allergy__content--container');
-var allergryContent = 0;
 var menuIcon = 0;
+var ageContent = 0;
+var nameInput = document.getElementById('main__name--input');
 
 // EVENT LISTENERS*****************
 
 mainButton.addEventListener("click", mainEvent);
 mainAllergyCard.addEventListener("click", allergyEventHandler);
+// imagesHomeIcon.addEventListener("click", newMenuContainer);
+infoCard.addEventListener("click", backToMenu);
 
 // FUNCTION**************************
 
@@ -29,6 +33,28 @@ function mainEvent(e) {
   newMenuContainer();
   getAge();
   insertAllergyIcon(e);
+};
+
+function getAge() {
+	var ageData = ageInput.value;
+	var stringData = ageData.toString();
+	var ageArray = stringData.split(' ');
+  if (ageArray[0] == 1) {
+    ageArray = 12;
+    insertTwelvePlus();
+  } else if (ageArray[0] < 6) {
+    insertBeforeSixMonths();
+	} else if (ageArray[0] == 6) {
+    insertSixMonths()
+  } else if (ageArray[0] <= 8) {
+    insertEightMonths();
+	} else if (ageArray[0] <= 10) {
+    insertTenMonths();
+  } else if (ageArray[0] <= 12) {
+    insertTwelveMonths();
+  } else if (ageArray[0] > 12) {
+    insertTwelvePlus();
+  }
 };
 
 function allergyEventHandler(e) {
@@ -42,9 +68,28 @@ function allergyHandler(e){
   console.log(allergyNodes);
 };
 
+function backToMenu(e) {
+  console.log('back 2 menu');
+  backMenuContainer();
+  getAge();
+  insertAllergyIcon();
+  // var allergyNodes = document.getElementById("main__allergy--card").childNodes;
+}
+
+function backMenuContainer() {
+  document.getElementById('main__article--container').style.width = "80px";
+  document.getElementById('main__info--card').style.width = "60%";
+  document.getElementById('main__info--card').style.visibility = "visible";
+  document.getElementById('main__content').innerText = " ";
+  document.getElementById('main__allergy--card').style.width = "80px";
+  document.getElementById('allergy__content--container').innerText = " ";
+  document.getElementById('images__menu--article').innerText = " ";
+  menuIcon--;
+  // document.getElementById('images__allergy--article').innerText = " ";
+};
+
 function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
-  document.getElementById('main__article--container').style.background = "#0F709B";
   document.getElementById('main__info--card').style.width = "60%";
   document.getElementById('main__info--card').style.visibility = "visible";
   document.getElementById('main__content').innerText = " ";
@@ -57,28 +102,22 @@ function allergySectionContent(e) {
   document.getElementById('card__container').style.width = "80px";
   document.getElementById('card__container').innerText = " ";
   document.getElementById('main__info--card').style.opacity = "1";
-  // document.getElementById('foodIconsContainer').style.height = "50px";
-  // document.getElementById('foodIconsContainer').style.display = "inline-block";
-  // document.getElementById('images__milk--icon').style.height = "50px";
-  // document.getElementById('images__milk--icon').style.width = "50px";
-  // document.getElementById('images__peanuts--icon').style.height = "50px";
-  // document.getElementById('images__peanuts--icon').style.width = "50px";
   document.getElementById('main__allergy--card').style.width = "60%";
   document.getElementById('main__info--card').style.width = "80px";
   document.getElementById('allergyIcon').innerText = " ";
-  insertMenuIcon()
+  insertMenuIcon();
 };
 
 function insertHomeIcon() {
    imagesHomeArticle.insertAdjacentHTML('afterbegin',
     `<container id="home__icon--container">
       <div id="homeIcon">
-        <img class="images__home--icon" src="images/home.png">
+        <img class="images__home--icon" id="images__home--icon" src="images/home.png">
       </div>
      </container>`);
 };
 
-function insertMenuIcon() {
+function insertMenuIcon(e) {
   if (menuIcon === 0) {
    imagesMenuArticle.insertAdjacentHTML('afterbegin',
     `<container id="menu__icon--container">
@@ -86,8 +125,8 @@ function insertMenuIcon() {
         <img class="images__menu--icon" src="images/tomato.png">
       </div>
      </container>`);
- }
  menuIcon++;
+ }
 };
 
 function insertAllergyIcon() {
@@ -118,7 +157,9 @@ function insertAllergyContent(e) {
           <div id="foodIconsContainer">
               <img id="images__milk--icon" src="images/milk.png">
               <img id="images__peanuts--icon" src="images/peanuts.png">
-              <img id="images__peanuts--icon" src="images/peanuts.png">
+              <img id="images__fish--icon" src="images/fish.png">
+              <img id="images__soy--icon" src="images/soy.png">
+              <img id="images__bread--icon" src="images/bread.png">
           </div>
        </div>
      </container>`);
@@ -127,6 +168,7 @@ function insertAllergyContent(e) {
 };
 
 function insertBeforeSixMonths() {
+  if (ageContent === 0) {
 	 infoCard.insertAdjacentHTML('afterbegin',
     `<container id="info__card--container">
       <div id="card__container">
@@ -142,6 +184,8 @@ function insertBeforeSixMonths() {
       	 </p>
        </div>
      </container>`);
+  }
+  ageContent++;
 };
 
 function insertSixMonths() {
@@ -156,18 +200,17 @@ function insertSixMonths() {
           <h3>
             Motor skills around 6 months old: moving food back and forth in the mouth.
           </h3>
-         <h3> 
-          Food before 1 if just for fun.
-         </h3>
         <p>
           Start to introduce them to food. 
           Make a goal of 100 foods in 100 days..
         </p>
         <p>
-          There are no hard-and-fast rules anymore about what to feed your baby first 
-          (except to steer clear of honey and choking hazards). Whether you choose to give your baby a vegetable puree, 
-          rice cereal, pureed chicken, or a wedge of watermelon to gnaw on, offer him just one new 
-          food every three days, and watch closely for signs of allergic reaction.
+          <span style="font-weight: 400"> 
+            There are no hard-and-fast rules anymore about what to feed your baby first 
+            (except to steer clear of honey and choking hazards). Whether you choose to give your baby a vegetable puree, 
+            rice cereal, pureed chicken, or a wedge of watermelon to gnaw on, offer him just one new 
+            food every three days, and watch closely for signs of allergic reaction.
+          </span>
         </p>
        </div>
      </container>`);
@@ -255,27 +298,6 @@ function insertTwelvePlus() {
     </container>`);
 };
 
-function getAge() {
-	var ageData = ageInput.value;
-	var stringData = ageData.toString();
-	var ageArray = stringData.split(' ');
-  if (ageArray[0] == 1) {
-    ageArray = 12;
-    insertTwelvePlus();
-  } else if (ageArray[0] < 6) {
-    insertBeforeSixMonths();
-	} else if (ageArray[0] == 6) {
-    insertSixMonths()
-  } else if (ageArray[0] <= 8) {
-    insertEightMonths();
-	} else if (ageArray[0] <= 10) {
-    insertTenMonths();
-  } else if (ageArray[0] <= 12) {
-    insertTwelveMonths();
-  } else if (ageArray[0] > 12) {
-    insertTwelvePlus();
-  }
-};
 
 
 
