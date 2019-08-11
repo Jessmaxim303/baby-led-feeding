@@ -1,7 +1,6 @@
 // GLOBAL VAR******************
 // var allergyCard = document.getElementById('main__allergy--card');
 var ageInput = document.getElementById('main__age--input');
-var allergryContent = 0;
 var allergyContainer = document.getElementById('allergy__container');
 var allergyContentContainer = document.getElementById('allergy__content--container');
 var allergyIconButton = document.getElementById('#allergyIcon');
@@ -16,6 +15,8 @@ var mainAllergyCard = document.getElementById('main__allergy--card');
 var mainArticleContainer = document.getElementById('main__article--container');
 var mainButton = document.getElementById('main__age--button');
 var mainContent = document.getElementById('mainContent');
+var homeIconButton = document.getElementById('homeIcon');
+var allergryContent = 0;
 var menuIcon = 0;
 var ageContent = 0;
 var nameInput = document.getElementById('main__name--input');
@@ -26,6 +27,7 @@ mainButton.addEventListener("click", mainEvent);
 mainAllergyCard.addEventListener("click", allergyEventHandler);
 // imagesHomeIcon.addEventListener("click", newMenuContainer);
 infoCard.addEventListener("click", backToMenu);
+mainArticleContainer.addEventListener("click", backHomeHandler)
 
 // FUNCTION**************************
 
@@ -68,8 +70,22 @@ function allergyHandler(e){
   console.log(allergyNodes);
 };
 
+function backHomeHandler(e) {
+  // var homeNodes = document.getElementById("main__article--container").childNodes;
+  if (e.target.classList.contains("images__home--icon")){
+    document.getElementById('images__home--icon').style.display = "none";
+    document.getElementById('main__article--container').style.width = "50%";
+    document.getElementById('main__info--card').style.width = "0px";
+    document.getElementById('main__info--card').innerText = " ";
+    document.getElementById('main__content').style.visibility = "visible";
+    document.getElementById('main__allergy--card').style.width = "0px";
+  }
+  // document.getElementById('main__article--container').style.width = "50%";
+  // document.getElementById('main__allergy--card').innerText = " ";
+  // document.getElementById('main__info--card').innerText = " ";
+}
+
 function backToMenu(e) {
-  console.log('back 2 menu');
   backMenuContainer();
   getAge();
   insertAllergyIcon();
@@ -80,7 +96,7 @@ function backMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
   document.getElementById('main__info--card').style.width = "60%";
   document.getElementById('main__info--card').style.visibility = "visible";
-  document.getElementById('main__content').innerText = " ";
+  // document.getElementById('main__content').innerText = " ";
   document.getElementById('main__allergy--card').style.width = "80px";
   document.getElementById('allergy__content--container').innerText = " ";
   document.getElementById('images__menu--article').innerText = " ";
@@ -92,7 +108,7 @@ function newMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
   document.getElementById('main__info--card').style.width = "60%";
   document.getElementById('main__info--card').style.visibility = "visible";
-  document.getElementById('main__content').innerText = " ";
+  document.getElementById('main__content').style.visibility = "hidden";
   document.getElementById('main__allergy--card').style.width = "80px";
   insertHomeIcon();
 };
@@ -108,12 +124,10 @@ function allergySectionContent(e) {
   insertMenuIcon();
 };
 
-function insertHomeIcon() {
+function insertHomeIcon(e) {
    imagesHomeArticle.insertAdjacentHTML('afterbegin',
     `<container id="home__icon--container">
-      <div id="homeIcon">
         <img class="images__home--icon" id="images__home--icon" src="images/home.png">
-      </div>
      </container>`);
 };
 
@@ -121,7 +135,7 @@ function insertMenuIcon(e) {
   if (menuIcon === 0) {
    imagesMenuArticle.insertAdjacentHTML('afterbegin',
     `<container id="menu__icon--container">
-      <div id="menuIcon">
+      <div id="menuIcon" class="menuIcon">
         <img class="images__menu--icon" src="images/tomato.png">
       </div>
      </container>`);
@@ -231,8 +245,10 @@ function insertEightMonths() {
             Start introducing them to some of the food allergy.
           </p>
           <p>
+          <span style="font-weight: 400"> 
             Introduce food allergens early on
            There is no real advantage of delaying food allergen introduction.
+           </span>
           </p>
       </div>
     </container>`);
@@ -250,11 +266,10 @@ function insertTenMonths() {
           Motor skills between 8-10 months: gaining skills, confidence and appetite.
         </h3>
         <p>
-          Start introducing them to some of the food allergy.
-        </p>
-        <p>
+         <span style="font-weight: 400"> 
           Introduce food allergens early on
           There is no real advantage of delaying food allergen introduction.
+         </span>
         </p>
       </div>
     </container>`);
@@ -272,9 +287,11 @@ function insertTwelveMonths() {
            Motor skills between 10-12 months: baby does the pincer grasp.
         </h3>
         <p>
-          Serve a range of food textures.
-          The amount of chewing strength and stamina required depends on food texture. 
-          Mix things up to expose baby to various textures.
+          <span style="font-weight: 400"> 
+            Serve a range of food textures.
+            The amount of chewing strength and stamina required depends on food texture. 
+            Mix things up to expose baby to various textures.
+          </span>
         </p>
       </div>
     </container>`);
@@ -292,7 +309,9 @@ function insertTwelvePlus() {
            Motor skills between 12+ months: baby is a pro but might learn that being messy gets your attention!.
         </h3>
         <p>
+         <span style="font-weight: 400"> 
           Baby eats like a pro and likely has more and more teeth, helping with the chewing.
+         </span>
         </p>
       </div>
     </container>`);
