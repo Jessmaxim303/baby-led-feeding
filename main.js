@@ -1,5 +1,4 @@
 // GLOBAL VAR******************
-// var allergyCard = document.getElementById('main__allergy--card');
 var ageInput = document.getElementById('main__age--input');
 var allergyContainer = document.getElementById('allergy__container');
 var allergyContentContainer = document.getElementById('allergy__content--container');
@@ -8,7 +7,6 @@ var cardContainer = document.getElementById('card__container');
 var imagesAllergyArticle = document.getElementById('images__allergy--article');
 var imagesHomeArticle = document.getElementById('images__home--article');
 var imagesHomeIcon = document.getElementById('images__home--icon');
-var imagesMenuArticle = document.getElementById('images__menu--article');
 var imagesMenuArticle = document.getElementById('images__menu--article');
 var infoCard = document.getElementById('main__info--card');
 var mainAllergyCard = document.getElementById('main__allergy--card');
@@ -27,7 +25,7 @@ mainButton.addEventListener("click", mainEvent);
 mainAllergyCard.addEventListener("click", allergyEventHandler);
 // imagesHomeIcon.addEventListener("click", newMenuContainer);
 infoCard.addEventListener("click", backToMenu);
-mainArticleContainer.addEventListener("click", backHomeHandler)
+mainArticleContainer.addEventListener("click", homeHandler)
 
 // FUNCTION**************************
 
@@ -65,25 +63,25 @@ function allergyEventHandler(e) {
   allergyHandler(e);
 };
 
-function allergyHandler(e){
-  var allergyNodes = document.getElementById("main__allergy--card").childNodes;
-  console.log(allergyNodes);
-};
-
-function backHomeHandler(e) {
-  // var homeNodes = document.getElementById("main__article--container").childNodes;
+function homeHandler(e) {
   if (e.target.classList.contains("images__home--icon")){
-    document.getElementById('images__home--icon').style.display = "none";
+    e.target.parentNode.remove();
     document.getElementById('main__article--container').style.width = "50%";
-    document.getElementById('main__info--card').style.width = "0px";
-    document.getElementById('main__info--card').innerText = " ";
+    document.getElementById('main__info--card').style.visibility = "hidden";
     document.getElementById('main__content').style.visibility = "visible";
     document.getElementById('main__allergy--card').style.width = "0px";
+    document.getElementById('main__allergy--card').innerText = " ";
+    menuIcon--;
+    ageContent--;
+    allergryContent--;
   }
-  // document.getElementById('main__article--container').style.width = "50%";
-  // document.getElementById('main__allergy--card').innerText = " ";
-  // document.getElementById('main__info--card').innerText = " ";
-}
+};
+
+function allergyNewContent() {
+  if (mainAllergyCard === " ") {
+    insertAllergyContent();
+    }
+  }
 
 function backToMenu(e) {
   backMenuContainer();
@@ -96,11 +94,10 @@ function backMenuContainer() {
   document.getElementById('main__article--container').style.width = "80px";
   document.getElementById('main__info--card').style.width = "60%";
   document.getElementById('main__info--card').style.visibility = "visible";
-  // document.getElementById('main__content').innerText = " ";
+  document.getElementById('allergy__content--container').style.visibility = "hidden";
   document.getElementById('main__allergy--card').style.width = "80px";
-  document.getElementById('allergy__content--container').innerText = " ";
-  document.getElementById('images__menu--article').innerText = " ";
   menuIcon--;
+  allergyNewContent();
   // document.getElementById('images__allergy--article').innerText = " ";
 };
 
@@ -116,11 +113,11 @@ function newMenuContainer() {
 function allergySectionContent(e) {
   document.getElementById('main__allergy--card').style.visibility = "visible";
   document.getElementById('card__container').style.width = "80px";
-  document.getElementById('card__container').innerText = " ";
+  document.getElementById('card__container').style.visibility = "hidden";
   document.getElementById('main__info--card').style.opacity = "1";
   document.getElementById('main__allergy--card').style.width = "60%";
   document.getElementById('main__info--card').style.width = "80px";
-  document.getElementById('allergyIcon').innerText = " ";
+  document.getElementById('allergyIcon').style.visibility = "hidden";
   insertMenuIcon();
 };
 
@@ -133,14 +130,14 @@ function insertHomeIcon(e) {
 
 function insertMenuIcon(e) {
   if (menuIcon === 0) {
-   imagesMenuArticle.insertAdjacentHTML('afterbegin',
+   infoCard.insertAdjacentHTML('afterbegin',
     `<container id="menu__icon--container">
       <div id="menuIcon" class="menuIcon">
         <img class="images__menu--icon" src="images/tomato.png">
       </div>
      </container>`);
- menuIcon++;
  }
+ menuIcon++;
 };
 
 function insertAllergyIcon() {
@@ -211,9 +208,9 @@ function insertSixMonths() {
           ${nameInput.value}
           ${ageInput.value}
         </h2>
-          <h3>
+          <h4>
             Motor skills around 6 months old: moving food back and forth in the mouth.
-          </h3>
+          </h4>
         <p>
           Start to introduce them to food. 
           Make a goal of 100 foods in 100 days..
